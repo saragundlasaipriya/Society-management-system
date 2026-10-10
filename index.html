@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Society Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">COMMUNITY PORTAL</p>
+      <h1>Society Management System</h1>
+      <p class="subtitle">A simple digital space for residents and administrators</p>
+    </div>
+    <span class="status-pill">Student Project</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome panel">
+      <div>
+        <p class="eyebrow">DASHBOARD</p>
+        <h2>Welcome to your society</h2>
+        <p>Track residents, maintenance requests, notices and monthly collections in one place.</p>
+      </div>
+      <div class="welcome-icon" aria-hidden="true">⌂</div>
+    </section>
+
+    <section class="stats-grid" aria-label="Society summary">
+      <article class="stat-card"><span class="stat-label">Residents</span><strong id="residentCount">0</strong><span class="stat-note">Registered residents</span></article>
+      <article class="stat-card"><span class="stat-label">Open requests</span><strong id="openCount">0</strong><span class="stat-note">Need attention</span></article>
+      <article class="stat-card"><span class="stat-label">Notices</span><strong id="noticeCount">0</strong><span class="stat-note">Community updates</span></article>
+      <article class="stat-card"><span class="stat-label">Collections</span><strong id="collectionTotal">₹0</strong><span class="stat-note">Demo payments recorded</span></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel">
+        <div class="section-heading"><div><p class="eyebrow">DIRECTORY</p><h2>Add a resident</h2></div></div>
+        <form id="residentForm" class="form-grid">
+          <label>Full name<input id="residentName" required maxlength="60" placeholder="e.g. Ananya Rao"></label>
+          <label>Flat number<input id="flatNumber" required maxlength="12" placeholder="e.g. B-204"></label>
+          <label>Contact number<input id="residentPhone" inputmode="numeric" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></label>
+          <button type="submit">Add resident</button>
+        </form>
+        <div class="table-wrap">
+          <table><thead><tr><th>Name</th><th>Flat</th><th>Contact</th><th></th></tr></thead><tbody id="residentTable"></tbody></table>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading"><div><p class="eyebrow">SMART HELPDESK</p><h2>Maintenance request</h2></div></div>
+        <p class="helper">The built-in rule-based helper estimates priority from the issue description. It is a demonstration, not a trained machine-learning model.</p>
+        <form id="requestForm" class="form-grid">
+          <label>Resident / flat<input id="requestFlat" required maxlength="30" placeholder="e.g. B-204"></label>
+          <label class="full">Describe the issue<textarea id="issueDescription" required maxlength="300" rows="3" placeholder="e.g. Water is leaking near the electrical panel"></textarea></label>
+          <div class="prediction full" id="predictionBox" aria-live="polite">Priority prediction will appear as you type.</div>
+          <button type="submit">Submit request</button>
+        </form>
+        <div class="table-wrap">
+          <table><thead><tr><th>Flat</th><th>Issue</th><th>Priority</th><th>Status</th><th></th></tr></thead><tbody id="requestTable"></tbody></table>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>Society notices</h2></div></div>
+        <form id="noticeForm" class="form-grid">
+          <label class="full">Notice title<input id="noticeTitle" required maxlength="80" placeholder="e.g. Water tank cleaning"></label>
+          <label class="full">Message<textarea id="noticeMessage" required maxlength="300" rows="3" placeholder="Enter notice details"></textarea></label>
+          <button type="submit">Publish notice</button>
+        </form>
+        <div id="noticeList" class="notice-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading"><div><p class="eyebrow">MAINTENANCE</p><h2>Record a payment</h2></div></div>
+        <form id="paymentForm" class="form-grid">
+          <label>Flat number<input id="paymentFlat" required maxlength="12" placeholder="e.g. B-204"></label>
+          <label>Amount (₹)<input id="paymentAmount" type="number" min="1" max="1000000" required placeholder="e.g. 2500"></label>
+          <button type="submit">Record payment</button>
+        </form>
+        <div class="table-wrap">
+          <table><thead><tr><th>Flat</th><th>Amount</th><th>Date</th></tr></thead><tbody id="paymentTable"></tbody></table>
+        </div>
+        <p class="helper">Payments are demo records only. No real money is collected.</p>
+      </article>
+    </section>
+    <footer>Society Management System · Academic prototype · Data stays in this browser</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
